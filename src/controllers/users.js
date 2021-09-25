@@ -15,7 +15,7 @@ const enroll = async (req, res) => {
       .first();
 
     if (!!userValidation) {
-      return res.status(400).json('E-mail já cadastrado!');
+      return res.status(409).json('E-mail já cadastrado!');
     };
 
     const hash = await bcrypt.hash(password, 10);

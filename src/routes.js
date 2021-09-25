@@ -1,5 +1,6 @@
 const express = require('express');
 const users = require('./controllers/users');
+const login = require('./controllers/login');
 
 const routes = express();
 
@@ -7,7 +8,7 @@ const routes = express();
 routes.post('/users', users.enroll);
 
 // Login
-routes.post('/login');
+routes.post('/login', login.login);
 
 // Verify authentication
 // routes.use(verifyAuthentication);
