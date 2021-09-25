@@ -7,7 +7,7 @@ const routes = express();
 routes.post('/users', users.enroll);
 
 // Login
-routes.post('/login');
+routes.post('/login', users.login);
 
 // Verify authentication
 // routes.use(verifyAuthentication);
