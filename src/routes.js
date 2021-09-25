@@ -1,9 +1,10 @@
 const express = require('express');
+const users = require('./controllers/users');
 
 const routes = express();
 
 // Enroll user
-routes.post('/users');
+routes.post('/users', users.enroll);
 
 // Login
 routes.post('/login');
