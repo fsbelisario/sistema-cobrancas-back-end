@@ -5,7 +5,7 @@ const validations = require('../validations/validations');
 
 const login = async (req, res) => {
   try {
-    await validations.schemaEnrollUser.validate(req.body);
+    await validations.schemaLogin.validate(req.body);
 
     const { email, password } = req.body;
 
