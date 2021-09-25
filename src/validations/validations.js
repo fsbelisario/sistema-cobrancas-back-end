@@ -12,5 +12,6 @@ const schemaLogin = yup.object().shape({
 });
 
 module.exports = {
-  schemaEnrollUser
+  schemaEnrollUser,
+  schemaLogin
 };
