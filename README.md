@@ -12,13 +12,13 @@
   * Cadastro de cliente
 
 * ## End-points
-  * ### POST - Cadastro usuário
+  * ### POST - Cadastro usuário (OK)
     * #### Dados recebidos
-      * Nome de usuário (obrigatório)
-      * E-mail (obrigatório)
-      * Senha (obrigatório)
+      * name - Nome de usuário (obrigatório)
+      * email - E-mail (obrigatório)
+      * password - Senha (obrigatório)
     * #### Dados retornados
-      * Sucesso / Erro
+      * Sucesso ou Erro
     * #### Objetivos gerais
       * Validar nome, e-mail e senha
       * Verificar se o e-mail já existe no BD
@@ -26,13 +26,12 @@
       * Cadastrar o usuário no BD
       * Retornar sucesso ou erro
 
-  * ### POST - Login
+  * ### POST - Login (OK)
     * #### Dados recebidos
-      * E=-mail (obrigatório)
-      * Senha (obrigatório)
+      * email - E-mail (obrigatório)
+      * password - Senha (obrigatório)
     * #### Dados retornados
-      * Sucesso / Erro
-      * Token (com id)
+      * Sucesso + token ou Erro
     * #### Objetivos gerais
       * Validar e-mail e senha
       * Buscar o usário no BD através do e-mail
@@ -40,7 +39,7 @@
       * Gerar o token de autenticação com id do usuário
       * Retornar token ou erro
 
-  * ### GET - Perfil
+  * ### GET - Perfil (TO DO)
     * #### Dados recebidos
       * Token (com id ou nome de usuário)
     * #### Dados retornados
@@ -54,7 +53,7 @@
       * Buscar o cadastro do usuário com a informação do token
       * Retornar as informações do perfil ou erro
 
-  * ### PUT - Perfil
+  * ### PUT - Perfil (TO DO)
     * #### Dados recebidos
       * Token (com id ou nome de usuário)
       * Nome
@@ -73,7 +72,7 @@
       * Atualizar as informações do usuário no BD
       * Retornar sucesso ou erro
 
-  * ### POST - Cadastro cliente
+  * ### POST - Cadastro cliente (TO DO)
     * #### Dados recebidos
       * Nome do cliente (obrigatório)
       * E-mail (obrigatório)
@@ -93,28 +92,6 @@
       * Criptografar a senha
       * Cadastrar o usuário no BD
       * Retornar sucesso ou erro
-
----
-
-# Front-end
-
-* ## Login:
-  * Botão de login desabilitado até que o email e senha estejam preenchidos
-
-* ## Home:
-  * Clientes e cobranças: fazer card componentizado para alimentar através de mapeamento
-  * Imagem de usuário: pode ser apenas um ícone de usuário (não precisa ser foto do usuário)
-
-* ## Edição de perfil:
-  * Modal (formulário sobre a tela atual)
-  * Alertas de sucesso ou erro (usando Alert ou Toastfy)
-  * Fechar formulário de edição automaticamente ao fechar o alerta
-
-* ## Cadastro de cliente:
-  * Modal (formulário sobre a tela atual)
-  * Alertas de sucesso ou erro (usando Alert ou Toastfy)
-  * Fechar formulário de edição automaticamente ao fechar o alerta
-  * Consultar endereço usando ViaCEP
 
 ---
 
