@@ -7,8 +7,8 @@ const schemaEnrollUser = yup.object().shape({
 });
 
 const schemaLogin = yup.object().shape({
-  email: yup.string().max(50).email().required('O campo E-mail é obrigatório.'),
-  password: yup.string().min(5).max(20).required('O campo Senha é obrigatório.')
+  email: yup.string().email().required('O campo E-mail é obrigatório.'),
+  password: yup.string().required('O campo Senha é obrigatório.')
 });
 
 module.exports = {
