@@ -11,7 +11,16 @@ const schemaLogin = yup.object().shape({
   password: yup.string().required('O campo Senha é obrigatório.')
 });
 
+const schemaEditUser = yup.object().shape({
+  name: yup.string().max(50),
+  email: yup.string().max(50).email(),
+  password: yup.string().min(5).max(20),
+  taxId: yup.string().length(11),
+  phone: yup.string().min(10).max(11)
+});
+
 module.exports = {
   schemaEnrollUser,
-  schemaLogin
+  schemaLogin,
+  schemaEditUser
 };
