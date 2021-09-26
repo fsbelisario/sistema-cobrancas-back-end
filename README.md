@@ -14,13 +14,13 @@
 * ## End-points
   * ### POST - Cadastro usuário (OK)
     * #### Dados recebidos
-      * name - Nome de usuário (obrigatório)
+      * name - Nome do usuário (obrigatório)
       * email - E-mail (obrigatório)
       * password - Senha (obrigatório)
     * #### Dados retornados
       * Sucesso ou Erro
     * #### Objetivos gerais
-      * Validar nome, e-mail e senha
+      * Validar dados recebidos no body
       * Verificar se o e-mail já existe no BD
       * Criptografar a senha
       * Cadastrar o usuário no BD
@@ -33,64 +33,61 @@
     * #### Dados retornados
       * Sucesso + token ou Erro
     * #### Objetivos gerais
-      * Validar e-mail e senha
+      * Validar dados recebidos no body
       * Buscar o usário no BD através do e-mail
       * Verificar se a senha informada está correta
       * Gerar o token de autenticação com id do usuário
       * Retornar token ou erro
 
-  * ### GET - Perfil (TO DO)
+  * ### GET - Perfil (OK)
     * #### Dados recebidos
-      * Token (com id ou nome de usuário)
+      * token
     * #### Dados retornados
-      * Nome
-      * E-mail
-      * Senha
-      * CPF
-      * Telefone
+      * name - Nome do usuário
+      * email - E-mail
+      * taxId - CPF
+      * phone - Telefone
     * #### Objetivos gerais
       * Validar o token
       * Buscar o cadastro do usuário com a informação do token
       * Retornar as informações do perfil ou erro
 
-  * ### PUT - Perfil (TO DO)
+  * ### PUT - Perfil (OK)
     * #### Dados recebidos
-      * Token (com id ou nome de usuário)
-      * Nome
-      * E-mail
-      * Senha
-      * CPF
-      * Telefone
+      * name - Nome do usuário (obrigatório)
+      * email - E-mail (obrigatório)
+      * password - Senha
+      * taxId - CPF
+      * phone - Telefone
     * #### Dados retornados
-      * Sucesso / Erro
+      * Sucesso ou Erro
     * #### Objetivos gerais
-      * Exigir ao menos 1 campo para atualizar
       * Validar o token
-      * Buscar o cadastro do usuário com a informação do token
-      * Criptografar a senha (se for informada)
-      * Verificar se o e-mail já existe no BD (se for informado)
+      * Validar dados recebidos no body
+      * Verificar se o e-mail já existe no BD
+      * Criptografar a senha (se for informada)      
       * Atualizar as informações do usuário no BD
       * Retornar sucesso ou erro
 
   * ### POST - Cadastro cliente (TO DO)
     * #### Dados recebidos
-      * Nome do cliente (obrigatório)
-      * E-mail (obrigatório)
-      * CPF (obrigatório)
-      * Telefone (obrigatório)
-      * CEP
-      * Logradouro
-      * Complemento
-      * Bairro
-      * Cidade
-      * Estado
+      * name - Nome do cliente (obrigatório)
+      * email - E-mail (obrigatório)
+      * taxId - CPF (obrigatório)
+      * phone - Telefone (obrigatório)
+      * zipCode - CEP
+      * street - Logradouro
+      * number - Número
+      * addressDetails - Complemento
+      * district - Bairro
+      * city - Cidade
+      * state - Estado
     * #### Dados retornados
-      * Sucesso / Erro
+      * Sucesso ou Erro
     * #### Objetivos gerais
-      * Validar nome, e-mail e senha
+      * Validar dados recebidos no body
       * Verificar se o e-mail já existe no BD
-      * Criptografar a senha
-      * Cadastrar o usuário no BD
+      * Cadastrar o cliente no BD
       * Retornar sucesso ou erro
 
 ---
