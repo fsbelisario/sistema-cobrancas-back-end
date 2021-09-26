@@ -27,7 +27,7 @@ const login = async (req, res) => {
 
     const token = jwt.sign({ id: userValidation.id }, process.env.TOKEN_KEY, { expiresIn: '2h' });
 
-    return res.status(200).json(token);
+    return res.status(200).json({ token });
   } catch (error) {
     return res.status(400).json(error.message);
   };
