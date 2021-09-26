@@ -34,6 +34,11 @@ const enroll = async (req, res) => {
   };
 };
 
+const retrieve = async (req, res) => {
+  return res.status(200).json(req.user);
+};
+
 module.exports = {
-  enroll
+  enroll,
+  retrieve
 };
