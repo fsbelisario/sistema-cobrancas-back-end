@@ -16,7 +16,7 @@ routes.use(verifyAuthentication);
 
 // Retrieve and edit profile data
 routes.get('/profile', users.retrieve);
-routes.put('/profile');
+routes.put('/profile', users.edit);
 
 // Enroll client
 routes.post('/clients');
