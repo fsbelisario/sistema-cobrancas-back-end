@@ -45,7 +45,6 @@
     * #### Dados retornados
       * Nome
       * E-mail
-      * Senha
       * CPF
       * Telefone
     * #### Objetivos gerais
