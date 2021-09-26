@@ -1,4 +1,5 @@
 const express = require('express');
+const verifyAuthentication = require('./filters/verifyAuthentication');
 const users = require('./controllers/users');
 const login = require('./controllers/login');
 
@@ -11,11 +12,11 @@ routes.post('/users', users.enroll);
 routes.post('/login', login.login);
 
 // Verify authentication
-// routes.use(verifyAuthentication);
+routes.use(verifyAuthentication);
 
 // Retrieve and edit profile data
-routes.get('/profile');
-routes.put('/profile');
+routes.get('/profile', users.retrieve);
+routes.put('/profile', users.edit);
 
 // Enroll client
 routes.post('/clients');
