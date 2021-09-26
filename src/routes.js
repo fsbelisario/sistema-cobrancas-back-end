@@ -15,7 +15,6 @@ routes.post('/login', login.login);
 routes.use(verifyAuthentication);
 
 // Retrieve and edit profile data
-
 routes.get('/profile');
 routes.put('/profile');
 
