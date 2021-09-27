@@ -69,8 +69,9 @@
       * Atualizar as informações do usuário no BD
       * Retornar sucesso ou erro
 
-  * ### POST - Cadastro cliente (TO DO)
+  * ### POST - Cadastro cliente (EM ANDAMENTO)
     * #### Dados recebidos
+      * userId - ID do usuário ao qual o cliente está vinculado (obrigatório)
       * name - Nome do cliente (obrigatório)
       * email - E-mail (obrigatório)
       * taxId - CPF (obrigatório)
