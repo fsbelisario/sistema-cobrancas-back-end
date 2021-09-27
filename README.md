@@ -69,7 +69,7 @@
       * Atualizar as informações do usuário no BD
       * Retornar sucesso ou erro
 
-  * ### POST - Cadastro cliente (EM ANDAMENTO)
+  * ### POST - Cadastro cliente (OK)
     * #### Dados recebidos
       * userId - ID do usuário ao qual o cliente está vinculado (obrigatório)
       * name - Nome do cliente (obrigatório)
