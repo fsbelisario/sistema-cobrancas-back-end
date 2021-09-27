@@ -15,6 +15,7 @@ CREATE TABLE users (
 
 CREATE TABLE clients (
   id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES users(id),
   name VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL UNIQUE,
   tax_id CHAR(11) NOT NULL UNIQUE,
@@ -25,5 +26,5 @@ CREATE TABLE clients (
   address_details VARCHAR,
   district VARCHAR,
   city VARCHAR,
-  state CHAR(2)  
+  state CHAR(2)
 ); 
