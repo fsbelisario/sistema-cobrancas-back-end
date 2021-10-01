@@ -30,6 +30,7 @@ const schemaEnrollClient = yup.object().shape({
   street: yup.string(),
   number: yup.string(),
   addressDetails: yup.string(),
+  reference: yup.string(),
   district: yup.string(),
   city: yup.string(),
   state: yup.string().length(2)

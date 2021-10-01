@@ -24,6 +24,7 @@ CREATE TABLE clients (
   street VARCHAR,
   number VARCHAR,
   address_details VARCHAR,
+  reference VARCHAR,
   district VARCHAR,
   city VARCHAR,
   state CHAR(2)

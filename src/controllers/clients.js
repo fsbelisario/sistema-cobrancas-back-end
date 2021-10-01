@@ -5,7 +5,7 @@ const enroll = async (req, res) => {
   try {
     await validations.schemaEnrollClient.validate(req.body);
 
-    const { name, email, taxId, phone, zipCode, street, number, addressDetails, district, city, state } = req.body;
+    const { name, email, taxId, phone, zipCode, street, number, addressDetails, reference, district, city, state } = req.body;
 
     const emailValidation = await knex('clients')
       .where({ user_id: req.user.id })
@@ -38,6 +38,10 @@ const enroll = async (req, res) => {
 
     if (addressDetails) {
       clientData.address_details = addressDetails;
+    };
+
+    if (reference) {
+      clientData.reference = reference;
     };
 
     if (district) {
