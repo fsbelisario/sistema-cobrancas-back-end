@@ -80,6 +80,7 @@
       * street - Logradouro
       * number - Número
       * addressDetails - Complemento
+      * reference - Ponto de referência
       * district - Bairro
       * city - Cidade
       * state - Estado
