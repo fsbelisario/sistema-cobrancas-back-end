@@ -67,12 +67,30 @@ const edit = async (req, res) => {
     };
 
     if (taxId) {
+      if (taxId.length !== 11) {
+        return res.status(400).json('O CPF deve ter 11 dígitos numéricos.');
+      };
+
+      if (!Number.isInteger(Number(taxId))) {
+        return res.status(400).json("O CPF deve conter apenas números.");
+      };
+
       profileData.tax_id = taxId;
     } else {
       profileData.tax_id = null;
     };
 
     if (phone) {
+      if (phone.length < 10 || phone.length > 11) {
+        return res.status(400).json('O telefone deve ter de 10 a 11 dígitos numéricos.');
+      };
+
+      if (!Number.isInteger(Number(phone))) {
+        return res.status(400).json("O telefone deve conter apenas números.");
+      };
+
+      return res.status(400).json("OK");
+
       profileData.phone = phone;
     } else {
       profileData.phone = null;
