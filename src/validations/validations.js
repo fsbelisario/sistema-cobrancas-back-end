@@ -16,9 +16,7 @@ const schemaLogin = yup.object().shape({
 const schemaEditUser = yup.object().shape({
   name: yup.string().max(50).required('O campo Nome é obrigatório.'),
   email: yup.string().max(50).email().required('O campo E-mail é obrigatório.'),
-  password: yup.string().min(5).max(20),
-  taxId: yup.string().length(11).matches(numberValidation, 'O campo CPF deve conter apenas números.'),
-  phone: yup.string().min(10).max(11).matches(numberValidation, 'O campo Telefone deve conter apenas números.')
+  password: yup.string().min(5).max(20)
 });
 
 const schemaEnrollClient = yup.object().shape({
