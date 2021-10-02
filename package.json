@@ -4,7 +4,7 @@
   "description": "Desafio final Cubos Academy - Back-end",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,19 @@
   "bugs": {
     "url": "https://github.com/fsbelisario/sistema-cobrancas-back-end/issues"
   },
-  "homepage": "https://github.com/fsbelisario/sistema-cobrancas-back-end#readme"
+  "homepage": "https://github.com/fsbelisario/sistema-cobrancas-back-end#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.95.11",
+    "pg": "^8.7.1",
+    "yup": "^0.32.9",
+    "yup-locales": "^1.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
 }
