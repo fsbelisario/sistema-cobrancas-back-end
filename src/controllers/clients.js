@@ -25,6 +25,14 @@ const enroll = async (req, res) => {
     };
 
     if (zipCode) {
+      if (zipCode.length !== 8) {
+        return res.status(400).json('O CEP deve ter 8 dígitos numéricos.');
+      };
+
+      if (!Number.isInteger(Number(zipCode))) {
+        return res.status(400).json("O CEP deve conter apenas números.");
+      };
+
       clientData.zip_code = zipCode;
     };
 
@@ -53,6 +61,10 @@ const enroll = async (req, res) => {
     };
 
     if (state) {
+      if (state.length !== 2) {
+        return res.status(400).json('O estado deve ser uma sigla com 2 letras.');
+      };
+
       clientData.state = state;
     };
 
