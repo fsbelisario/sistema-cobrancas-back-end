@@ -68,10 +68,14 @@ const edit = async (req, res) => {
 
     if (taxId) {
       profileData.tax_id = taxId;
+    } else {
+      profileData.tax_id = null;
     };
 
     if (phone) {
       profileData.phone = phone;
+    } else {
+      profileData.phone = null;
     };
 
     const id = req.user.id;
