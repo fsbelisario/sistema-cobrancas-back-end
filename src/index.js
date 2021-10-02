@@ -10,6 +10,4 @@ app.use(cors());
 
 app.use(routes);
 
-// app.listen(process.env.PORT || 3003);
-
-app.listen(3003);
+app.listen(process.env.PORT || 3003);
