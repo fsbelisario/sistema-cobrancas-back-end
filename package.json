@@ -4,7 +4,8 @@
   "description": "Desafio final Cubos Academy - Back-end",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/index.js"
+    "dev": "nodemon ./src/index.js",
+    "start": "./src/index.js"
   },
   "repository": {
     "type": "git",
