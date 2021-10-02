@@ -89,8 +89,6 @@ const edit = async (req, res) => {
         return res.status(400).json("O telefone deve conter apenas números.");
       };
 
-      return res.status(400).json("OK");
-
       profileData.phone = phone;
     } else {
       profileData.phone = null;
