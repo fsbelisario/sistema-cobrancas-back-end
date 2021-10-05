@@ -174,15 +174,15 @@
       * Cadastrar a cobrança no BD
       * Retornar sucesso ou erro
 
-  * ### GET - Consulta lista de cobranças (TO DO)
+  * ### GET - Consulta lista de cobranças (OK)
     * #### Dados recebidos
       * token
     * #### Dados retornados
       * Lista de clientes com:
         * id - ID da cobrança
-        * clientName - Nome do cliente
+        * name - Nome do cliente
         * description - Descrição da cobrança
-        * dueDate - Data de vencimento da cobrança
+        * due_date - Data de vencimento da cobrança
         * value - Valor da cobrança
         * status - Status da cobrança (PENDENTE, PAGO ou VENCIDO)
     * #### Objetivos gerais
