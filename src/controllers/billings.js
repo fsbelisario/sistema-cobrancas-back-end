@@ -1,4 +1,5 @@
 const knex = require('../connection');
+const format = require('date-fns/format');
 const validations = require('../validations/validations');
 
 const enroll = async (req, res) => {
@@ -46,7 +47,27 @@ const enroll = async (req, res) => {
 };
 
 const list = async (req, res) => {
+  try {
+    const billingsList = await knex('billings')
+      .leftJoin('clients', 'clients.id', 'billings.client_id')
+      .select('billings.id', 'clients.name', 'billings.description',
+        'billings.due_date', 'billings.value', 'billings.status')
+      .orderBy('billings.due_date');
 
+    if (!billingsList) {
+      return res.status(404).json('Sem cobranças cadastradas.');
+    };
+
+    for (let i = 0; i < billingsList.length; i++) {
+      if (billingsList[i].status === 'PENDENTE' && format(Date.parse(billingsList[i].due_date), 'yyyy-MM-dd') < format(new Date(), 'yyyy-MM-dd')) {
+        billingsList[i].status = 'VENCIDO';
+      };
+    };
+
+    return res.status(200).json(billingsList);
+  } catch (error) {
+    return res.status(400).json(error.message);
+  };
 };
 
 module.exports = {
