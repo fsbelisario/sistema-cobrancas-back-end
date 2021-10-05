@@ -4,6 +4,8 @@ DROP TABLE IF EXISTS users;
 
 DROP TABLE IF EXISTS clients;
 
+DROP TABLE IF EXISTS billing;
+
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
@@ -27,4 +29,11 @@ CREATE TABLE clients (
   district VARCHAR,
   city VARCHAR,
   state CHAR(2)
+);
+
+CREATE TABLE billing (
+  id SERIAL PRIMARY KEY,
+  client_id INTEGER NOT NULL REFERENCES clients(id),
+  value INTEGER NOT NULL,
+  status VARCHAR
 ); 

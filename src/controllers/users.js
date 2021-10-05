@@ -60,16 +60,6 @@ const edit = async (req, res) => {
       };
     };
 
-    if (!!taxId) {
-      const taxIdValidation = await knex('users')
-        .where({ tax_id: taxId })
-        .first();
-
-      if (!!taxIdValidation) {
-        return res.status(409).json('CPF informado já cadastrado para outro usuário!');
-      };
-    };
-
     profileData.email = processedEmail;
 
     if (password) {
@@ -77,6 +67,14 @@ const edit = async (req, res) => {
     };
 
     if (taxId) {
+      const taxIdValidation = await knex('users')
+        .where({ tax_id: taxId })
+        .first();
+
+      if (!!taxIdValidation) {
+        return res.status(409).json('CPF informado já cadastrado para outro usuário!');
+      };
+
       if (taxId.length !== 11) {
         return res.status(400).json('O CPF deve ter 11 dígitos numéricos.');
       };
