@@ -100,4 +100,5 @@
 ---
 
 ## Figma
-[Figma sprint 1](https://www.figma.com/file/KV0rQOsEBphvJehWCBD3Mp/Desafio-Cubos-Academy-(Sprint-1)?node-id=0%3A1)
+[Figma sprint 1](https://www.figma.com/file/KV0rQOsEBphvJehWCBD3Mp/Desafio-Cubos-Academy-(Sprint-1))
+[Figma sprint 2](https://www.figma.com/file/ZSA5Vx2DcGA5LY7Bd5lLrl/Desafio-Cubos-Academy-(Sprint-2))
