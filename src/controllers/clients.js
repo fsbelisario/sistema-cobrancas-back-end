@@ -206,7 +206,12 @@ const enroll = async (req, res) => {
   };
 };
 
+const list = async (req, res) => {
+
+};
+
 module.exports = {
   edit,
-  enroll
+  enroll,
+  list
 };
