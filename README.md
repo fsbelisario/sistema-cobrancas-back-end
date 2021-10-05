@@ -132,7 +132,7 @@
       * Buscar os dados dos clientes cadastrados
       * Retornar a lista ou erro
 
-  * ### PUT - Edição cliente (TO DO)
+  * ### PUT - Edição cliente (OK)
     * #### Dados recebidos
       * token
       * name - Nome do cliente (obrigatório)
@@ -157,12 +157,12 @@
       * Atualizar as informações do usuário no BD
       * Retornar sucesso ou erro
 
-  * ### POST - Cadastro cobrança (TO DO)
+  * ### POST - Cadastro cobrança (EM ANDAMENTO)
     * #### Dados recebidos
       * token
       * clientId - ID do cliente (obrigatório)
       * description - Descrição da cobrança (obrigatório)
-      * status - Status da cobrança (obrigatório)
+      * status - Status da cobrança (PENDENTE ou PAGO) (obrigatório)
       * value - Valor da cobrança (obrigatório)
       * dueDate - Data de vencimento da cobrança (obrigatório)
     * #### Dados retornados
