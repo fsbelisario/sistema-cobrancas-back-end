@@ -1,6 +1,10 @@
 const knex = require('../connection');
 const validations = require('../validations/validations');
 
+const edit = async (req, res) => {
+
+};
+
 const enroll = async (req, res) => {
   try {
     await validations.schemaEnrollClient.validate(req.body);
@@ -89,5 +93,6 @@ const enroll = async (req, res) => {
 };
 
 module.exports = {
+  edit,
   enroll
 };

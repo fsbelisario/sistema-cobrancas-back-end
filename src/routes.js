@@ -19,7 +19,8 @@ routes.use(verifyAuthentication);
 routes.get('/profile', users.retrieve);
 routes.put('/profile', users.edit);
 
-// Enroll client
+// Client
 routes.post('/clients', clients.enroll);
+routes.put('/clients/:id', clients.edit);
 
 module.exports = routes;
