@@ -1,4 +1,5 @@
 const knex = require('../connection');
+const format = require('date-fns/format');
 const validations = require('../validations/validations');
 
 const edit = async (req, res) => {
@@ -207,7 +208,57 @@ const enroll = async (req, res) => {
 };
 
 const list = async (req, res) => {
+  try {
+    const clientsList = await knex('clients')
+      .orderBy('name');
 
+    if (!clientsList) {
+      return res.status(409).json('Nenhum cliente cadastrado!');
+    };
+
+    for (let i = 0; i < clientsList.length; i++) {
+      const billings = await knex('billings')
+        .sum('value')
+        .where({ client_id: clientsList[i].id })
+        .first();
+
+      if (!!billings) {
+        clientsList[i].billings = billings.sum;
+      } else {
+        clientsList[i].billings = 0;
+      };
+
+      const payments = await knex('billings')
+        .sum('value')
+        .where({ client_id: clientsList[i].id })
+        .andWhere({ status: 'PAGO' })
+        .first();
+
+      if (!!payments) {
+        clientsList[i].payments = payments.sum;
+      } else {
+        clientsList[i].payments = 0;
+      };
+
+      const status = await knex('billings')
+        .where({ client_id: clientsList[i].id })
+        .andWhere({ status: 'PENDENTE' })
+        .andWhere('due_date', '<', format(new Date(), 'yyyy-MM-dd'));
+
+      if (status.length > 0) {
+        clientsList[i].status = 'INADIMPLENTE';
+      } else {
+        clientsList[i].status = 'EM DIA';
+      };
+
+      clientsList[i].billingList = await knex('billings')
+        .where({ client_id: clientsList[i].id });
+    };
+
+    return res.status(200).json(clientsList);
+  } catch (error) {
+    return res.status(400).json(error.message);
+  };
 };
 
 module.exports = {
