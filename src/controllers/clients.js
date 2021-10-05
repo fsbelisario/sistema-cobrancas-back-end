@@ -8,8 +8,7 @@ const enroll = async (req, res) => {
     const { name, email, taxId, phone, zipCode, street, number, addressDetails, reference, district, city, state } = req.body;
 
     const emailValidation = await knex('clients')
-      .where({ user_id: req.user.id })
-      .andWhere({ email: email.toLowerCase() })
+      .where({ email: email.toLowerCase() })
       .first();
 
     if (!!emailValidation) {
@@ -17,7 +16,6 @@ const enroll = async (req, res) => {
     };
 
     const clientData = {
-      user_id: req.user.id,
       name,
       email: email.toLowerCase(),
       tax_id: taxId,
