@@ -1,5 +1,6 @@
 const express = require('express');
 const verifyAuthentication = require('./filters/verifyAuthentication');
+const billings = require('./controllers/billings');
 const clients = require('./controllers/clients');
 const login = require('./controllers/login');
 const users = require('./controllers/users');
@@ -21,6 +22,10 @@ routes.put('/profile', users.edit);
 
 // Client
 routes.post('/clients', clients.enroll);
+routes.get('/clients', clients.list);
 routes.put('/clients/:id', clients.edit);
+
+// Billings
+routes.post('/billings', billings.enroll);
 
 module.exports = routes;

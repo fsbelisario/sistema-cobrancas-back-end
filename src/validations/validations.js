@@ -23,6 +23,14 @@ const schemaEditUser = yup.object().shape({
   password: yup.string().min(5).max(20)
 });
 
+const schemaEnrollBilling = yup.object().shape({
+  clientId: yup.number().positive().integer().required('O campo Cliente é obrigatório.'),
+  description: yup.string().required('O campo Descrição é obrigatório.'),
+  status: yup.string().min(4).max(8).required('O campo Status é obrigatório.'),
+  value: yup.number().positive().integer().required('O campo Valor é obrigatório.'),
+  dueDate: yup.date().required('O campo Data de Vencimento é obrigatório.')
+});
+
 const schemaEnrollUser = yup.object().shape({
   name: yup.string().max(50).required('O campo Nome é obrigatório.'),
   email: yup.string().max(50).email().required('O campo E-mail é obrigatório.'),
@@ -37,6 +45,7 @@ const schemaLogin = yup.object().shape({
 module.exports = {
   schemaClient,
   schemaEditUser,
+  schemaEnrollBilling,
   schemaEnrollUser,
   schemaLogin
 };
