@@ -7,7 +7,7 @@ const edit = async (req, res) => {
 
 const enroll = async (req, res) => {
   try {
-    await validations.schemaEnrollClient.validate(req.body);
+    await validations.schemaClient.validate(req.body);
 
     const { name, email, taxId, phone, zipCode, street, number, addressDetails, reference, district, city, state } = req.body;
 
