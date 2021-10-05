@@ -15,6 +15,14 @@ const enroll = async (req, res) => {
       return res.status(409).json('Cliente já cadastrado!');
     };
 
+    const taxIdValidation = await knex('clients')
+      .where({ tax_id: taxId })
+      .first();
+
+    if (!!taxIdValidation) {
+      return res.status(409).json('CPF informado já cadastrado para outro cliente!');
+    };
+
     const clientData = {
       name,
       email: email.toLowerCase(),

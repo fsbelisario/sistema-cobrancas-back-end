@@ -60,6 +60,16 @@ const edit = async (req, res) => {
       };
     };
 
+    if (!!taxId) {
+      const taxIdValidation = await knex('users')
+        .where({ tax_id: taxId })
+        .first();
+
+      if (!!taxIdValidation) {
+        return res.status(409).json('CPF informado já cadastrado para outro usuário!');
+      };
+    };
+
     profileData.email = processedEmail;
 
     if (password) {
