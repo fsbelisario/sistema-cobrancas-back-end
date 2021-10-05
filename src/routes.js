@@ -22,6 +22,7 @@ routes.put('/profile', users.edit);
 
 // Client
 routes.post('/clients', clients.enroll);
+routes.get('/clients', clients.list);
 routes.put('/clients/:id', clients.edit);
 
 // Billings

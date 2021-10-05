@@ -100,7 +100,7 @@
       * Cadastrar o cliente no BD
       * Retornar sucesso ou erro
 
-  * ### GET - Consulta lista de clientes (TO DO)
+  * ### GET - Consulta lista de clientes (OK)
     * #### Dados recebidos
       * token
     * #### Dados retornados
@@ -108,12 +108,12 @@
         * id - ID do cliente
         * name - Nome do cliente
         * email - E-mail
-        * taxId - CPF
+        * tax_id - CPF
         * phone - Telefone
-        * zipCode - CEP
+        * zip_code - CEP
         * street - Logradouro
         * number - Número
-        * addressDetails - Complemento
+        * address_details - Complemento
         * reference - Ponto de referência
         * district - Bairro
         * city - Cidade
@@ -122,11 +122,12 @@
         * payments - Valor total de pagamentos recebidos
         * status - Status do cliente (EM DIA ou INADIMPLENTE)
         * billingList - lista de cobranças do cliente:
-          * billingId - ID da cobrança
-          * billingDescription - Descrição da cobrança
-          * billindDueDate - Data de vencimento da cobrança
-          * billingValue - Valor da cobrança
-          * billingStatus - Status da cobrança
+          * id - ID da cobrança
+          * client_id - ID do cliente associado à cobrança
+          * description - Descrição da cobrança
+          * status - Status da cobrança
+          * value - Valor da cobrança
+          * due_date - Data de vencimento da cobrança
     * #### Objetivos gerais
       * Validar o token
       * Buscar os dados dos clientes cadastrados
@@ -157,7 +158,7 @@
       * Atualizar as informações do usuário no BD
       * Retornar sucesso ou erro
 
-  * ### POST - Cadastro cobrança (EM ANDAMENTO)
+  * ### POST - Cadastro cobrança (OK)
     * #### Dados recebidos
       * token
       * clientId - ID do cliente (obrigatório)
