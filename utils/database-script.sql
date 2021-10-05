@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS users;
 
 DROP TABLE IF EXISTS clients;
 
-DROP TABLE IF EXISTS billing;
+DROP TABLE IF EXISTS billings;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
@@ -31,9 +31,11 @@ CREATE TABLE clients (
   state CHAR(2)
 );
 
-CREATE TABLE billing (
+CREATE TABLE billings (
   id SERIAL PRIMARY KEY,
   client_id INTEGER NOT NULL REFERENCES clients(id),
+  description TEXT NOT NULL,
+  status VARCHAR(8) NOT NULL,
   value INTEGER NOT NULL,
-  status VARCHAR
-); 
+  due_date DATE NOT NULL
+);
