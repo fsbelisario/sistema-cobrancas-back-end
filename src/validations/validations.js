@@ -2,24 +2,7 @@ const yup = require('./config');
 
 const numberValidation = RegExp(/^\d+$/);
 
-const schemaEnrollUser = yup.object().shape({
-  name: yup.string().max(50).required('O campo Nome é obrigatório.'),
-  email: yup.string().max(50).email().required('O campo E-mail é obrigatório.'),
-  password: yup.string().min(5).max(20).required('O campo Senha é obrigatório.')
-});
-
-const schemaLogin = yup.object().shape({
-  email: yup.string().email().required('O campo E-mail é obrigatório.'),
-  password: yup.string().required('O campo Senha é obrigatório.')
-});
-
-const schemaEditUser = yup.object().shape({
-  name: yup.string().max(50).required('O campo Nome é obrigatório.'),
-  email: yup.string().max(50).email().required('O campo E-mail é obrigatório.'),
-  password: yup.string().min(5).max(20)
-});
-
-const schemaEnrollClient = yup.object().shape({
+const schemaClient = yup.object().shape({
   name: yup.string().max(50).required('O campo Nome é obrigatório.'),
   email: yup.string().max(50).email().required('O campo E-mail é obrigatório.'),
   taxId: yup.string().length(11).matches(numberValidation, 'O campo CPF deve conter apenas números.').required('O campo CPF é obrigatório.'),
@@ -34,9 +17,26 @@ const schemaEnrollClient = yup.object().shape({
   state: yup.string()
 });
 
+const schemaEditUser = yup.object().shape({
+  name: yup.string().max(50).required('O campo Nome é obrigatório.'),
+  email: yup.string().max(50).email().required('O campo E-mail é obrigatório.'),
+  password: yup.string().min(5).max(20)
+});
+
+const schemaEnrollUser = yup.object().shape({
+  name: yup.string().max(50).required('O campo Nome é obrigatório.'),
+  email: yup.string().max(50).email().required('O campo E-mail é obrigatório.'),
+  password: yup.string().min(5).max(20).required('O campo Senha é obrigatório.')
+});
+
+const schemaLogin = yup.object().shape({
+  email: yup.string().email().required('O campo E-mail é obrigatório.'),
+  password: yup.string().required('O campo Senha é obrigatório.')
+});
+
 module.exports = {
-  schemaEnrollUser,
-  schemaLogin,
+  schemaClient,
   schemaEditUser,
-  schemaEnrollClient
+  schemaEnrollUser,
+  schemaLogin
 };
