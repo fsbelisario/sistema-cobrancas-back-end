@@ -15,7 +15,6 @@ CREATE TABLE users (
 
 CREATE TABLE clients (
   id SERIAL PRIMARY KEY,
-  user_id INTEGER NOT NULL REFERENCES users(id),
   name VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL,
   tax_id CHAR(11) NOT NULL,
