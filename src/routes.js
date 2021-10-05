@@ -27,5 +27,6 @@ routes.put('/clients/:id', clients.edit);
 
 // Billings
 routes.post('/billings', billings.enroll);
+routes.get('/billings', billings.list);
 
 module.exports = routes;
