@@ -45,7 +45,7 @@
 
   * ### GET - Consulta perfil (OK)
     * #### Dados recebidos
-      * token
+      * token (obrigatório)
     * #### Dados retornados
       * name - Nome do usuário
       * email - E-mail
@@ -58,7 +58,7 @@
 
   * ### PUT - Edição perfil (OK)
     * #### Dados recebidos
-      * token
+      * token (obrigatório)
       * name - Nome do usuário (obrigatório)
       * email - E-mail (obrigatório)
       * password - Senha
@@ -77,7 +77,7 @@
 
   * ### POST - Cadastro cliente (OK)
     * #### Dados recebidos
-      * token
+      * token (obrigatório)
       * name - Nome do cliente (obrigatório)
       * email - E-mail (obrigatório)
       * taxId - CPF (obrigatório)
@@ -102,7 +102,7 @@
 
   * ### GET - Consulta lista de clientes (OK)
     * #### Dados recebidos
-      * token
+      * token (obrigatório)
     * #### Dados retornados
       * Lista de clientes com:
         * id - ID do cliente
@@ -135,7 +135,7 @@
 
   * ### PUT - Edição cliente (OK)
     * #### Dados recebidos
-      * token
+      * token (obrigatório)
       * name - Nome do cliente (obrigatório)
       * email - E-mail (obrigatório)
       * taxId - CPF (obrigatório)
@@ -160,7 +160,7 @@
 
   * ### POST - Cadastro cobrança (OK)
     * #### Dados recebidos
-      * token
+      * token (obrigatório)
       * clientId - ID do cliente (obrigatório)
       * description - Descrição da cobrança (obrigatório)
       * status - Status da cobrança (PENDENTE ou PAGO) (obrigatório)
@@ -171,12 +171,13 @@
     * #### Objetivos gerais
       * Validar o token
       * Validar dados recebidos no body
+      * Atualizar as informações do usuário no BD
       * Cadastrar a cobrança no BD
       * Retornar sucesso ou erro
 
   * ### GET - Consulta lista de cobranças (OK)
     * #### Dados recebidos
-      * token
+      * token (obrigatório)
     * #### Dados retornados
       * Lista de clientes com:
         * id - ID da cobrança
@@ -190,6 +191,50 @@
       * Buscar os dados das cobranças cadastradas
       * Retornar a lista ou erro
 
+  * ### PUT - Edição cobrança (TO DO)
+    * #### Dados recebidos
+      * token (obrigatório)
+      * id - ID da cobrança (obrigatório)
+      * clientId - ID do cliente (obrigatório)
+      * description - Descrição da cobrança (obrigatório)
+      * status - Status da cobrança (PENDENTE ou PAGO) (obrigatório)
+      * value - Valor da cobrança (obrigatório)
+      * dueDate - Data de vencimento da cobrança (obrigatório)
+    * #### Dados retornados
+      * Sucesso ou Erro
+    * #### Objetivos gerais
+      * Validar o token
+      * Validar id da cobrança recebido no params
+      * Validar dados recebidos no body
+      * Atualizar as informações da cobrança no BD
+      * Retornar sucesso ou erro
+
+  * ### DELETE - Exclusão de cobrança (TO DO)
+    * #### Dados recebidos
+      * token (obrigatório)
+      * id - ID da cobrança (obrigatório)
+    * #### Dados retornados
+      * Sucesso ou Erro
+    * #### Objetivos gerais
+      * Validar o token
+      * Validar id da cobrança recebido no params
+      * Efetivar exclusão da cobrança no BD
+      * Retornar sucesso ou erro
+
+  * ### GET - Consultar resumo na Home (TO DO)
+    * #### Dados recebidos
+      * token (obrigatório)
+    * #### Dados retornados
+      * Quantidade de clientes em dia
+      * Quantidade de clientes inadimplentes
+      * Valor total de cobranças pendentes
+      * Valor total de cobranças vencidas
+      * Valor total de cobranças pagas
+    * #### Objetivos gerais
+      * Validar o token
+      * Buscar os dados das cobranças cadastradas
+      * Retornar a dados ou erro
+
 ---
 
 ## Deploy
@@ -198,5 +243,6 @@
 ---
 
 ## Figma
-[Figma sprint 1](https://www.figma.com/file/KV0rQOsEBphvJehWCBD3Mp/Desafio-Cubos-Academy-(Sprint-1))
-[Figma sprint 2](https://www.figma.com/file/ZSA5Vx2DcGA5LY7Bd5lLrl/Desafio-Cubos-Academy-(Sprint-2))
+* [Figma sprint 1](https://www.figma.com/file/KV0rQOsEBphvJehWCBD3Mp/Desafio-Cubos-Academy-(Sprint-1))
+* [Figma sprint 2](https://www.figma.com/file/ZSA5Vx2DcGA5LY7Bd5lLrl/Desafio-Cubos-Academy-(Sprint-2))
+* [Figma sprint 3](https://www.figma.com/file/QFdwbyQilN8gJ0omEawVdp/Desafio-Cubos-Academy-(Sprint-3))
