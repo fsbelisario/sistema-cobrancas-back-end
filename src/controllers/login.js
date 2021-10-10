@@ -25,7 +25,7 @@ const login = async (req, res) => {
       return res.status(400).json('E-mail e/ou senha não conferem.');
     };
 
-    const token = jwt.sign({ id: userValidation.id }, process.env.TOKEN_KEY, { expiresIn: '2h' });
+    const token = jwt.sign({ id: userValidation.id }, process.env.TOKEN_KEY);
 
     return res.status(200).json({ token });
   } catch (error) {
