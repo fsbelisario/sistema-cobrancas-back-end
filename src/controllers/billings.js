@@ -125,8 +125,44 @@ const list = async (req, res) => {
   };
 };
 
+const remove = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const billingValidation = await knex('billings')
+      .where({ id })
+      .first();
+
+    if (!billingValidation) {
+      return res.status(409).json('Cobrança não localizada!');
+    };
+
+    if (billingValidation.status !== 'PENDENTE') {
+      return res.status(403).json('Exclusão não permitida para cobranças pagas.');
+    };
+
+    if (format(Date.parse(billingValidation.due_date), 'yyyy-MM-dd') < format(new Date(), 'yyyy-MM-dd')) {
+      return res.status(403).json('Exclusão não permitida para cobranças com data vencida.');
+    };
+
+    const removedBilling = await knex('billings')
+      .del()
+      .where({ id })
+      .returning('*');
+
+    if (!removedBilling) {
+      return res.status(400).json('Não foi possível excluir a cobrança.');
+    };
+
+    return res.status(200).json('Cobrança excluída com sucesso!');
+  } catch (error) {
+    return res.status(400).json(error.message);
+  };
+};
+
 module.exports = {
   edit,
   enroll,
-  list
+  list,
+  remove
 };
