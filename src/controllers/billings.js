@@ -8,7 +8,7 @@ const edit = async (req, res) => {
 
 const enroll = async (req, res) => {
   try {
-    await validations.schemaEnrollBilling.validate(req.body);
+    await validations.schemaBilling.validate(req.body);
 
     const { clientId, description, status, value, dueDate } = req.body;
 
