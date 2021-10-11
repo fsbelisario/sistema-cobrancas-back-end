@@ -13,7 +13,9 @@
   * Editar cliente cadastrado
   * Listar clientes cadastrados
   * Cadastrar cobrança
-  * Listar cobranças cadastrados
+  * Listar cobranças cadastradas
+  * Editar cobrança cadastrada
+  * Excluir cobrança cadastrada
 
 * ## End-points
   * ### POST - Cadastro usuário (OK)
@@ -221,7 +223,7 @@
       * Efetivar exclusão da cobrança no BD
       * Retornar sucesso ou erro
 
-  * ### GET - Consultar resumo na Home (TO DO)
+  * ### GET - Consultar resumo na Home (OK)
     * #### Dados recebidos
       * token (obrigatório)
     * #### Dados retornados
