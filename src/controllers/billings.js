@@ -3,12 +3,63 @@ const format = require('date-fns/format');
 const validations = require('../validations/validations');
 
 const edit = async (req, res) => {
+  try {
+    const { id } = req.params;
 
+    const billingValidation = await knex('billings')
+      .where({ id })
+      .first();
+
+    if (!billingValidation) {
+      return res.status(409).json('Cobrança não localizada!');
+    };
+
+    await validations.schemaBilling.validate(req.body);
+
+    const { clientId, description, status, value, dueDate } = req.body;
+
+    const clientValidation = await knex('clients')
+      .where({ id: clientId })
+      .first();
+
+    if (!clientValidation) {
+      return res.status(409).json('O cliente informado não foi localizado.');
+    };
+
+    if (status.toUpperCase() !== 'PAGO' && status.toUpperCase() !== 'PENDENTE') {
+      return res.status(404).json('O status da cobrança deve ser PAGO ou PENDENTE.');
+    };
+
+    if (value <= 0) {
+      return res.status(404).json('O valor da cobrança deve ser maior que zero.');
+    };
+
+    const billingData = {
+      client_id: clientId,
+      description,
+      status: status.toUpperCase(),
+      value,
+      due_date: dueDate
+    };
+
+    const updatedBilling = await knex('billings')
+      .update(billingData)
+      .where({ id })
+      .returning('*');
+
+    if (!updatedBilling) {
+      return res.status(400).json('Não foi possível atualizar a cobrança.');
+    };
+
+    return res.status(200).json('Cobrança atualizada com sucesso.');
+  } catch (error) {
+    return res.status(400).json(error.message);
+  };
 };
 
 const enroll = async (req, res) => {
   try {
-    await validations.schemaEnrollBilling.validate(req.body);
+    await validations.schemaBilling.validate(req.body);
 
     const { clientId, description, status, value, dueDate } = req.body;
 

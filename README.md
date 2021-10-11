@@ -193,7 +193,7 @@
       * Buscar os dados das cobranças cadastradas
       * Retornar a lista ou erro
 
-  * ### PUT - Edição cobrança (TO DO)
+  * ### PUT - Edição cobrança (OK)
     * #### Dados recebidos
       * token (obrigatório)
       * id - ID da cobrança (obrigatório)
