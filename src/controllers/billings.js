@@ -125,8 +125,13 @@ const list = async (req, res) => {
   };
 };
 
+const remove = async (req, res) => {
+
+};
+
 module.exports = {
   edit,
   enroll,
-  list
+  list,
+  remove
 };

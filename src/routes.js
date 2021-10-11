@@ -30,6 +30,7 @@ routes.put('/clients/:id', clients.edit);
 routes.post('/billings', billings.enroll);
 routes.put('/billings/:id', billings.edit);
 routes.get('/billings', billings.list);
+routes.delete('/billings/:id', billings.remove);
 
 // Management
 routes.get('/management', management.retrieve);
