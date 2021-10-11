@@ -2,6 +2,18 @@ const knex = require('../connection');
 const format = require('date-fns/format');
 const validations = require('../validations/validations');
 
+const clientOptions = async (req, res) => {
+  try {
+    const clientsList = await knex('clients')
+      .select('id', 'name')
+      .orderBy('name');
+
+    return res.status(200).json(clientsList);
+  } catch (error) {
+    return res.status(400).json(error.message);
+  };
+};
+
 const edit = async (req, res) => {
   try {
     const { id } = req.params;
@@ -251,8 +263,23 @@ const list = async (req, res) => {
         clientsList[i].status = 'EM DIA';
       };
 
-      clientsList[i].billingList = await knex('billings')
-        .where({ client_id: clientsList[i].id });
+      const billingList = await knex('billings')
+        .where({ client_id: clientsList[i].id })
+        .orderBy('due_date');
+
+      if (billingList.length > 0) {
+        for (let j = 0; j < billingList.length; j++) {
+          billingList[j].due_date = format(Date.parse(billingList[j].due_date), 'yyyy-MM-dd');
+
+          if (billingList[j].status === 'PENDENTE') {
+            if (format(Date.parse(billingList[j].due_date), 'yyyy-MM-dd') < format(new Date(), 'yyyy-MM-dd')) {
+              billingList[j].status = 'VENCIDO'
+            };
+          };
+        };
+      };
+
+      clientsList[i].billingList = billingList;
     };
 
     return res.status(200).json(clientsList);
@@ -262,6 +289,7 @@ const list = async (req, res) => {
 };
 
 module.exports = {
+  clientOptions,
   edit,
   enroll,
   list
