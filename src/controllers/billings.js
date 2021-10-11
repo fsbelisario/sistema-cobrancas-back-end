@@ -2,6 +2,10 @@ const knex = require('../connection');
 const format = require('date-fns/format');
 const validations = require('../validations/validations');
 
+const edit = async (req, res) => {
+
+};
+
 const enroll = async (req, res) => {
   try {
     await validations.schemaEnrollBilling.validate(req.body);
@@ -71,6 +75,7 @@ const list = async (req, res) => {
 };
 
 module.exports = {
+  edit,
   enroll,
   list
 };
