@@ -31,6 +31,6 @@ routes.post('/billings', billings.enroll);
 routes.get('/billings', billings.list);
 
 // Management
-routes.get('/management', management.list);
+routes.get('/management', management.retrieve);
 
 module.exports = routes;
