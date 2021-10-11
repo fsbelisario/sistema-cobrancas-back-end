@@ -211,7 +211,7 @@
       * Atualizar as informações da cobrança no BD
       * Retornar sucesso ou erro
 
-  * ### DELETE - Exclusão de cobrança (TO DO)
+  * ### DELETE - Exclusão de cobrança (OK)
     * #### Dados recebidos
       * token (obrigatório)
       * id - ID da cobrança (obrigatório)
