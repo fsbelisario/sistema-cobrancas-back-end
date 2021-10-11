@@ -1,7 +1,7 @@
 const knex = require('../connection');
 const format = require('date-fns/format');
 
-const list = async (req, res) => {
+const retrieve = async (req, res) => {
   try {
     let overdueClients = 0;
     let onTimeClients = 0;
@@ -57,5 +57,5 @@ const list = async (req, res) => {
 };
 
 module.exports = {
-  list
+  retrieve
 };
