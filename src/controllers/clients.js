@@ -251,8 +251,23 @@ const list = async (req, res) => {
         clientsList[i].status = 'EM DIA';
       };
 
-      clientsList[i].billingList = await knex('billings')
-        .where({ client_id: clientsList[i].id });
+      const billingList = await knex('billings')
+        .where({ client_id: clientsList[i].id })
+        .orderBy('due_date');
+
+      if (billingList.length > 0) {
+        for (let j = 0; j < billingList.length; j++) {
+          billingList[j].due_date = format(Date.parse(billingList[j].due_date), 'yyyy-MM-dd');
+
+          if (billingList[j].status === 'PENDENTE') {
+            if (format(Date.parse(billingList[j].due_date), 'yyyy-MM-dd') < format(new Date(), 'yyyy-MM-dd')) {
+              billingList[j].status = 'VENCIDO'
+            };
+          };
+        };
+      };
+
+      clientsList[i].billingList = billingList;
     };
 
     return res.status(200).json(clientsList);
