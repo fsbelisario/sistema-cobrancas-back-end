@@ -31,20 +31,22 @@ const edit = async (req, res) => {
     };
 
     if (taxId) {
-      const taxIdValidation = await knex('users')
-        .where({ tax_id: taxId })
-        .first();
-
-      if (!!taxIdValidation) {
-        return res.status(409).json('CPF informado já cadastrado para outro usuário!');
-      };
-
       if (taxId.length !== 11) {
         return res.status(400).json('O CPF deve ter 11 dígitos numéricos.');
       };
 
       if (!Number.isInteger(Number(taxId))) {
         return res.status(400).json("O CPF deve conter apenas números.");
+      };
+
+      if (taxId !== req.user.tax_id) {
+        const taxIdValidation = await knex('users')
+          .where({ tax_id: taxId })
+          .first();
+
+        if (!!taxIdValidation) {
+          return res.status(409).json('CPF informado já cadastrado para outro usuário!');
+        };
       };
 
       profileData.tax_id = taxId;
