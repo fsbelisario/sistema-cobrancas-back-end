@@ -1,5 +1,8 @@
 const knex = require('../connection');
-const format = require('date-fns/format');
+const {
+  add,
+  format
+} = require('date-fns');
 const validations = require('../validations/validations');
 
 const edit = async (req, res) => {
@@ -32,6 +35,13 @@ const edit = async (req, res) => {
 
     if (value <= 0) {
       return res.status(404).json('O valor da cobrança deve ser maior que zero.');
+    };
+
+    if (
+      format(Date.parse(dueDate.replace('-', '/')), 'yyyy-MM-dd') < format(add(new Date(), { years: -15 }), 'yyyy-MM-dd') ||
+      format(Date.parse(dueDate.replace('-', '/')), 'yyyy-MM-dd') > format(add(new Date(), { years: 15 }), 'yyyy-MM-dd')
+    ) {
+      return res.status(404).json('A data de vencimento da cobrança deve não pode ultrapassar 15 anos da data atual.');
     };
 
     const billingData = {
@@ -77,6 +87,13 @@ const enroll = async (req, res) => {
 
     if (value <= 0) {
       return res.status(404).json('O valor da cobrança deve ser maior que zero.');
+    };
+
+    if (
+      format(Date.parse(dueDate.replace('-', '/')), 'yyyy-MM-dd') < format(add(new Date(), { years: -15 }), 'yyyy-MM-dd') ||
+      format(Date.parse(dueDate.replace('-', '/')), 'yyyy-MM-dd') > format(add(new Date(), { years: 15 }), 'yyyy-MM-dd')
+    ) {
+      return res.status(404).json('A data de vencimento da cobrança deve não pode ultrapassar 15 anos da data atual.');
     };
 
     const billingData = {
