@@ -221,8 +221,7 @@ const enroll = async (req, res) => {
 
 const list = async (req, res) => {
   try {
-    const clientsList = await knex('clients')
-      .orderBy('name');
+    const clientsList = await knex('clients');
 
     if (!clientsList) {
       return res.status(409).json('Nenhum cliente cadastrado!');
