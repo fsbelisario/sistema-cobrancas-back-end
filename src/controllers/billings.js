@@ -122,8 +122,9 @@ const list = async (req, res) => {
   try {
     const billingsList = await knex('billings')
       .leftJoin('clients', 'clients.id', 'billings.client_id')
-      .select('billings.id', 'clients.name', 'billings.description',
-        'billings.due_date', 'billings.value', 'billings.status');
+      .select('billings.id', 'clients.name', 'clients.email',
+        'clients.tax_id', 'billings.description', 'billings.due_date',
+        'billings.value', 'billings.status');
 
     if (!billingsList) {
       return res.status(404).json('Sem cobranças cadastradas.');
